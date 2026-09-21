@@ -29,7 +29,3 @@ the non-commercial research terms of its supplied pretrained models.
 NTU RGB+D 120 must be obtained separately from its owners. Filename lists do not
 substitute for dataset permission. Local aggregate features and trained artifacts
 are excluded from the public source distribution.
-
-`paper/accv.sty`, `paper/accvabbrv.sty`, `paper/llncs.cls`, and `paper/splncs04.bst`
-retain their upstream notices. The manuscript and figures are research materials,
-not a blanket grant of rights to third-party imagery or publisher content.
