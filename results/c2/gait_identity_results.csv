@@ -1,0 +1,3 @@
+rank1,rank5,mAP,num_gallery,num_probe,queries_with_match,attack,protocol,method,gallery_requested,probe_requested,gallery_coverage,probe_coverage,coverage_adjusted_rank1,silhouette_source,checkpoint_domain
+0.26264591439688717,0.4735964424680378,0.0807755447363443,3599.0,3598.0,3598.0,gait_identity,crossview_cam2,original,3600,3600,0.9997222222222222,0.9994444444444445,0.2625,otsu_person_crop,CASIA-B
+0.08476931628682602,0.2529182879377432,0.0487838368043073,3599.0,3598.0,3598.0,gait_identity,crossview_cam2,deepprivacy2,3600,3600,0.9997222222222222,0.9994444444444445,0.08472222222222223,otsu_person_crop,CASIA-B

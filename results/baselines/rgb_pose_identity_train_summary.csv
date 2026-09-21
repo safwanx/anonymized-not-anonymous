@@ -1,0 +1,5 @@
+protocol,model_path,train_requested,train_valid,train_coverage,mean_pose_frame_coverage,mean_keypoint_conf,num_persons
+crossview_cam2,artifacts/features/rgb_pose_identity/models/crossview_cam2_rgb_pose_identity.joblib,3600,3600,1.0,1.0,0.9388024540576669,38
+crossview_cam3,artifacts/features/rgb_pose_identity/models/crossview_cam3_rgb_pose_identity.joblib,3600,3600,1.0,1.0,0.9388024540576669,38
+crosssetup,artifacts/features/rgb_pose_identity/models/crosssetup_rgb_pose_identity.joblib,1140,1140,1.0,1.0,0.9356658738956117,18
+crossrange,artifacts/features/rgb_pose_identity/models/crossrange_rgb_pose_identity.joblib,240,240,1.0,1.0,0.9352309835453828,3

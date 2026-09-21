@@ -1,0 +1,5 @@
+attack,protocol,method,train_samples,test_samples,num_persons,accuracy,balanced_accuracy,chance
+pose_native_skeleton,crossview_cam2,native_skeleton,3595,3599,38,0.135037510419561,0.11811790505675954,0.02631578947368421
+pose_native_skeleton,crossview_cam3,native_skeleton,3595,3551,38,0.05294283300478738,0.043022613708265156,0.02631578947368421
+pose_native_skeleton,crosssetup,native_skeleton,1136,1140,18,0.09385964912280702,0.08796296296296297,0.05555555555555555
+pose_native_skeleton,crossrange,native_skeleton,240,240,3,0.4,0.44722222222222224,0.3333333333333333

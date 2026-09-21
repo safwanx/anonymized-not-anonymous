@@ -1,0 +1,5 @@
+split,description,videos,actions,min_per_action,max_per_action,path
+train_original_r1_allcams,"Original RGB training clips: all cameras, replication 1.",10800,120,81,99,artifacts/features/action_videomae_v2/splits/train_original_r1_allcams.csv
+val_original_c1r2,"Original RGB validation clips: camera 1, replication 2.",3600,120,27,33,artifacts/features/action_videomae_v2/splits/val_original_c1r2.csv
+test_original_c2r2,"Cross-view test clips: camera 2, replication 2.",3600,120,27,33,artifacts/features/action_videomae_v2/splits/test_original_c2r2.csv
+test_original_c3r2,"Cross-view test clips: camera 3, replication 2.",3600,120,27,33,artifacts/features/action_videomae_v2/splits/test_original_c3r2.csv

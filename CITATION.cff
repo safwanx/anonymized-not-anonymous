@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or protocol, please cite the associated paper."
+type: software
+title: "Anonymized but Not Anonymous: Multi-Cue Identity Leakage in Privacy-Preserving Action Recognition"
+authors:
+  - family-names: Nabeel
+    given-names: Safwan
+  - family-names: AlShiha
+    given-names: Farah
+  - family-names: Behzad
+    given-names: Muzammil
+license: MIT
+repository-code: "https://github.com/safwanx/anonymized-not-anonymous"
+preferred-citation:
+  type: conference-paper
+  title: "Anonymized but Not Anonymous: Multi-Cue Identity Leakage in Privacy-Preserving Action Recognition"
+  authors:
+    - family-names: Nabeel
+      given-names: Safwan
+    - family-names: AlShiha
+      given-names: Farah
+    - family-names: Behzad
+      given-names: Muzammil
+  collection-title: "Asian Conference on Computer Vision (ACCV)"
+  year: 2026

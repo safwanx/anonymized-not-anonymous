@@ -1,0 +1,3 @@
+attack,protocol,method,probe_requested,probe_features,probe_known_identity,probe_coverage,accuracy,balanced_accuracy,top5,coverage_adjusted_accuracy,num_gallery_persons,checkpoint
+rgb_pose_temporal_cnn_identity,crossview_cam2,original,3600,3600,3600,1.0,0.11527777777777778,0.10460526315789474,0.36083333333333334,0.11527777777777778,38,artifacts/features/rgb_pose_identity/models/crossview_cam2_rgb_pose_temporal_cnn.pt
+rgb_pose_temporal_cnn_identity,crossview_cam2,deepprivacy2,3600,3600,3600,1.0,0.08777777777777777,0.07752192982456141,0.315,0.08777777777777777,38,artifacts/features/rgb_pose_identity/models/crossview_cam2_rgb_pose_temporal_cnn.pt

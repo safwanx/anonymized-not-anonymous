@@ -1,0 +1,20 @@
+--- a/dp2/anonymizer/anonymizer.py
++++ b/dp2/anonymizer/anonymizer.py
+@@ -97,7 +97,7 @@
+             self.dl = tops.config.instantiate(cfg.data.val.loader)
+             init_affine_modules(G, batch)
+         if z_idx is None:
+-            z_idx = np.random.randint(0, 2**32)
++            z_idx = np.random.randint(0, 2**32, dtype=np.int64)
+         state = np.random.RandomState(seed=z_idx)
+         z = state.normal(size=(1, G.z_channels)).astype(np.float32)
+         z = tops.to_cuda(torch.from_numpy(z))
+@@ -222,7 +222,7 @@
+             z_idx = []
+             for track_id in track_ids:
+                 if track_id not in self.track_to_z_idx:
+-                    self.track_to_z_idx[track_id] = np.random.randint(0, 2**32 - 1)
++                    self.track_to_z_idx[track_id] = np.random.randint(0, 2**32 - 1, dtype=np.int64)
+                 z_idx.append(self.track_to_z_idx[track_id])
+             z_idx = np.array(z_idx)
+             idx_offset = 0

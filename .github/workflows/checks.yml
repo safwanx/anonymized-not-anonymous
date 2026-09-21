@@ -1,0 +1,12 @@
+name: CPU evidence checks
+on: [push, pull_request]
+jobs:
+  protocol-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: python -m unittest discover -s analysis -p 'test_*.py' -v
+      - run: python tools/check_project.py

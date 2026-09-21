@@ -1,0 +1,3 @@
+rank1,rank5,mAP,num_gallery,num_probe,queries_with_match,attack,protocol,method,gallery_requested,probe_requested,gallery_coverage,probe_coverage,probe_person_frame_coverage,coverage_adjusted_rank1
+0.8519444444444444,0.9208333333333333,0.5818708642253079,3600.0,3600.0,3600.0,reid,crossview_cam2,original,3600,3600,1.0,1.0,0.9992452462688384,0.8519444444444444
+0.14222222222222222,0.2902777777777778,0.12084039715765992,3600.0,3600.0,3600.0,reid,crossview_cam2,deepprivacy2,3600,3600,1.0,1.0,0.9992452462688384,0.14222222222222222

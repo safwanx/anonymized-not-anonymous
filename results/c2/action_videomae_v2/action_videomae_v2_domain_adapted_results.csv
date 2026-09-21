@@ -1,0 +1,4 @@
+split,train_method,test_method,evaluation_mode,top1,top5,mean_class_accuracy,samples,comparison_baseline,clean_reference_top1,zero_shot_top1,top1_gain_vs_zero_shot,relative_top1_gain_vs_zero_shot,recovered_clean_gap,retained_utility_top1
+test_original_c2r2,original,original,clean_reference,0.6775,0.9336111111111111,0.6776936026936027,3600,original->original,0.6775,0.6775,0.0,0.0,,1.0
+test_original_c2r2,original,deepprivacy2,zero_shot,0.4116666666666667,0.7058333333333333,0.41049382716049376,3600,original->deepprivacy2,0.6775,0.4116666666666667,0.0,0.0,,0.6076260762607626
+test_original_c2r2,deepprivacy2,deepprivacy2,adapted,0.5941666666666666,0.8886111111111111,0.5934624017957351,3600,original->deepprivacy2,0.6775,0.4116666666666667,0.18249999999999994,0.44331983805668,0.6865203761755484,0.8769987699876998

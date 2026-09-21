@@ -1,0 +1,15 @@
+--- a/python-package/insightface/model_zoo/model_zoo.py
++++ b/python-package/insightface/model_zoo/model_zoo.py
+@@ -93,6 +93,11 @@
+     router = ModelRouter(model_file)
+     providers = kwargs.get('providers', get_default_providers())
+     provider_options = kwargs.get('provider_options', get_default_provider_options())
+-    model = router.get_model(providers=providers, provider_options=provider_options)
++    sess_options = kwargs.get('sess_options', None)
++    model = router.get_model(
++        providers=providers,
++        provider_options=provider_options,
++        sess_options=sess_options,
++    )
+     return model
+ 

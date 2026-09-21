@@ -1,0 +1,3 @@
+attack,protocol,method,probe_requested,probe_features,probe_known_identity,probe_coverage,mean_pose_frame_coverage,mean_keypoint_conf,num_gallery_persons,accuracy,top5,balanced_accuracy,coverage_adjusted_accuracy,chance
+rgb_pose_identity,crossview_cam2,original,3600,3600,3600,1.0,1.0,0.9472956631912125,38,0.10333333333333333,0.37277777777777776,0.09342105263157895,0.10333333333333333,0.02631578947368421
+rgb_pose_identity,crossview_cam2,deepprivacy2,3600,3600,3600,1.0,1.0,0.9472060747279061,38,0.09,0.3458333333333333,0.07839912280701751,0.09,0.02631578947368421

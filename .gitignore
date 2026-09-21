@@ -1,0 +1,52 @@
+# Allowlist: only the release folders and files named below are published.
+# Everything else at the repository root stays local, including the manuscript
+# (/paper/), runtime data (/outputs/, /datasets/, /models/, /repos/), and /dist/.
+/*
+!/.github/
+!/analysis/
+!/artifacts/
+!/docs/
+!/environments/
+!/gait_integration/
+!/jobs/
+!/pbp_integration/
+!/pipeline/
+!/protocol/
+!/results/
+!/tools/
+!/.gitattributes
+!/.gitignore
+!/CITATION.cff
+!/LICENSE
+!/README.md
+!/THIRD_PARTY.md
+
+# Optional local experiment binaries and restored dataset inputs
+/artifacts/*
+!/artifacts/README.md
+!/artifacts/MANIFEST.sha256
+/protocol/rgb/
+/protocol/skeletons/
+
+# Local-only maintainer tooling (protocol construction, zip packaging)
+/tools/build_protocol.py
+/tools/package_release.py
+
+# Python / environments / local settings
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.egg-info/
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

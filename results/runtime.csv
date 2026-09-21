@@ -1,0 +1,5 @@
+shard,gpu,targets,already_cached,elapsed_minutes,scope,source_sha256
+0,NVIDIA RTX A4500,900,1,126.6,probe synthesis from extracted frames; excludes extraction and downstream attacks,8ca6473830683ab040453cb47dd5aca7fedb0da36e7930462da2ec1a3ee77948
+1,NVIDIA RTX A4500,900,0,136.2,probe synthesis from extracted frames; excludes extraction and downstream attacks,3cf54d8bdbd60b96995ebe9b794b68953c8f69b50b5451020ca69cb37edd354e
+2,NVIDIA RTX A4500,900,0,180.5,probe synthesis from extracted frames; excludes extraction and downstream attacks,0f09a0e70be4fadff8934865e189cb5005e94d8b4bc6afddda417e426f5f1f22
+3,NVIDIA RTX A4500,900,0,207.2,probe synthesis from extracted frames; excludes extraction and downstream attacks,251533b9de1b4d39297d65635a96fefceca7c4cb69a0dbdb5158d7a8ad887862

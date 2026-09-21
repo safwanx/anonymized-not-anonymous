@@ -1,0 +1,3 @@
+rank1,rank5,mAP,num_gallery,num_probe,queries_with_match,attack,protocol,method,probe_requested,probe_coverage,coverage_adjusted_rank1
+0.3763888888888889,0.6797222222222222,0.07907667300580234,3600.0,3600.0,3600.0,feature_linkability,crossview_cam2,original,3600,1.0,0.3763888888888889
+0.3238888888888889,0.6238888888888889,0.07247232071644753,3600.0,3600.0,3600.0,feature_linkability,crossview_cam2,pbp_aam,3600,1.0,0.3238888888888889

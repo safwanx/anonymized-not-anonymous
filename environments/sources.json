@@ -1,0 +1,42 @@
+[
+  {
+    "path": "adversaries/deep-person-reid",
+    "url": "https://github.com/KaiyangZhou/deep-person-reid.git",
+    "revision": "f8cd150fdf77e8d9e1ed143b7f308c2c609ded50",
+    "patches": []
+  },
+  {
+    "path": "adversaries/insightface",
+    "url": "https://github.com/deepinsight/insightface.git",
+    "revision": "f8613d444c6c266e8ff2fb29676a0a1cba6ee7a1",
+    "patches": [
+      "patches/insightface.patch"
+    ]
+  },
+  {
+    "path": "adversaries/OpenGait",
+    "url": "https://github.com/ShiqiYu/OpenGait.git",
+    "revision": "f754f6f3831e9f83bb28f4e2f63dd43d8bcf9dc4",
+    "patches": []
+  },
+  {
+    "path": "privacy_methods/deep_privacy2",
+    "url": "https://github.com/hukkelas/deep_privacy2.git",
+    "revision": "f4d8f09d1eb8f758c89cf1795ae41f20533942d3",
+    "patches": [
+      "patches/deep_privacy2.patch"
+    ]
+  },
+  {
+    "path": "privacy_methods/PrivacyBeyondPixels",
+    "url": "https://github.com/UCF-CRCV/PrivacyBeyondPixels.git",
+    "revision": "3f8d538985bf8ea26e3933b96c14e8fb5c090da6",
+    "patches": []
+  },
+  {
+    "path": "detectron2-96c752ce",
+    "url": "https://github.com/facebookresearch/detectron2.git",
+    "revision": "96c752ce821a3340e27edd51c28a00665dd32a30",
+    "patches": []
+  }
+]

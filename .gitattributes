@@ -1,0 +1,10 @@
+# Shell scripts and SLURM batch files must stay LF (they run on Linux/SLURM).
+*.sh    text eol=lf
+*.sbatch text eol=lf
+# Python uses LF across platforms.
+*.py    text eol=lf
+# Preserve exact evidence bytes for SHA-256 verification on every platform.
+*.csv   -text
+*.txt   -text
+*.sha256 text eol=lf
+*.json  text eol=lf
