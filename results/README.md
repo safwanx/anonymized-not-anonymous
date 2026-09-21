@@ -27,5 +27,3 @@ anonymization-aware RGB-pose result. `silhouette_proxy_results.csv` is not GaitB
 
 `MANIFEST.sha256` checks the retained numerical files. Absolute machine paths in
 path-only CSV fields were made portable; numerical cells were not changed.
-The manuscript table builder records its exact CSV input hashes in
-`paper/tables/asset_audit.json`.
