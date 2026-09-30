@@ -2,13 +2,15 @@
 
 <p align="center">
   <b><a href="https://safwanx.github.io/">Safwan Nabeel</a></b><sup>1</sup> &nbsp;
-  <b>Farah AlShiha</b><sup>2</sup> &nbsp;
-  <b><a href="https://muzammilbehzad.com/">Muzammil Behzad</a></b><sup>1</sup>
+  <b>Farah Alshiha</b><sup>2</sup> &nbsp;
+  <b><a href="https://muzammilbehzad.com/">Muzammil Behzad</a></b><sup>3,4</sup>
 </p>
 
 <p align="center">
-  <sup>1</sup>King Fahd University of Petroleum and Minerals, Dhahran, Saudi Arabia &nbsp;
-  <sup>2</sup>Columbia University, New York, NY, USA
+  <sup>1</sup>King Abdullah University of Science and Technology, Thuwal, Saudi Arabia<br>
+  <sup>2</sup>Columbia University, New York, NY, USA<br>
+  <sup>3</sup>King Fahd University of Petroleum &amp; Minerals, Dhahran, Saudi Arabia<br>
+  <sup>4</sup>SDAIA-KFUPM Joint Research Center for Artificial Intelligence, Saudi Arabia
 </p>
 
 <p align="center"><b>Asian Conference on Computer Vision (ACCV) 2026</b></p>
@@ -272,7 +274,7 @@ Component guides: [pipeline](pipeline/README.md), [GaitBase](gait_integration/RE
 @inproceedings{nabeel2026anonymized,
   title     = {Anonymized but Not Anonymous: Multi-Cue Identity Leakage in
                Privacy-Preserving Action Recognition},
-  author    = {Nabeel, Safwan and AlShiha, Farah and Behzad, Muzammil},
+  author    = {Nabeel, Safwan and Alshiha, Farah and Behzad, Muzammil},
   booktitle = {Asian Conference on Computer Vision (ACCV)},
   year      = {2026}
 }
