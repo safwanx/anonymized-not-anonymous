@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Anonymized but Not Anonymous | ACCV 2026</title>
+  <meta
+    name="description"
+    content="Anonymized but Not Anonymous: Multi-Cue Identity Leakage in Privacy-Preserving Action Recognition (ACCV 2026). Face blur reduces face matching, while appearance, pose, and silhouette cues can still link people across videos."
+  >
+  <meta name="theme-color" content="#f8f7f0">
+
+  <meta property="og:title" content="Anonymized but Not Anonymous">
+  <meta property="og:description" content="Multi-Cue Identity Leakage in Privacy-Preserving Action Recognition. ACCV 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brain-lab-ai.github.io/Anonymized-But-Not-Anonymous/">
+  <meta property="og:image" content="https://brain-lab-ai.github.io/Anonymized-But-Not-Anonymous/assets/figures/teaser.png">
+  <meta property="og:image:alt" content="Face blur hides the face cue, while body, pose, and silhouette cues remain.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://brain-lab-ai.github.io/Anonymized-But-Not-Anonymous/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&amp;display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    // Resolve the theme before first paint: a saved choice wins, otherwise follow the system.
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      var theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (error) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      root.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/site/styles.css">
+  <script src="assets/site/script.js" defer></script>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="Anonymized but Not Anonymous, back to top">
+        <svg class="brand-mark" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true" focusable="false">
+          <rect width="64" height="64" rx="14" fill="#132e3f"/>
+          <path d="M19.5 47 32 16.5 44.5 47" fill="none" stroke="#f8f7f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24.8 37h14.4" fill="none" stroke="#e09675" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">Anonymized but Not Anonymous</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#abstract" data-spy>Abstract</a>
+        <a href="#method" data-spy>Method</a>
+        <a href="#benchmark" data-spy>Benchmark</a>
+        <a href="#results" data-spy>Results</a>
+        <a href="#code" data-spy>Code</a>
+        <a href="#cite" data-spy>Cite</a>
+        <a class="nav-pill" href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme" data-theme-toggle>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20.4 14.3A8.6 8.6 0 0 1 9.7 3.6a8.6 8.6 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 2.6v2.3M12 19.1v2.3M2.6 12h2.3M19.1 12h2.3M5.4 5.4 7 7M17 17l1.6 1.6M5.4 18.6 7 17M17 7l1.6-1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="shell intro-grid">
+        <div class="intro-copy">
+          <p class="label">ACCV 2026 · Asian Conference on Computer Vision</p>
+          <h1 id="page-title">Anonymized but <span>Not Anonymous</span></h1>
+          <p class="lede">Multi-Cue Identity Leakage in Privacy-Preserving Action Recognition</p>
+          <p class="author-list">
+            <a href="https://safwanx.github.io/" target="_blank" rel="noreferrer">Safwan Nabeel</a><sup>1</sup>,
+            Farah AlShiha<sup>2</sup>, and
+            <a href="https://muzammilbehzad.com/" target="_blank" rel="noreferrer">Muzammil Behzad</a><sup>1</sup>
+          </p>
+          <ul class="affiliations">
+            <li><sup>1</sup>King Fahd University of Petroleum and Minerals, Dhahran, Saudi Arabia</li>
+            <li><sup>2</sup>Columbia University, New York, NY, USA</li>
+          </ul>
+          <nav class="link-row" aria-label="Project resources">
+            <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous" target="_blank" rel="noreferrer">Code</a>
+            <span class="pending">Paper · coming soon</span>
+            <a href="#results">Results</a>
+            <a href="#cite">BibTeX</a>
+          </nav>
+        </div>
+
+        <aside class="finding" aria-labelledby="finding-title">
+          <p class="label" id="finding-title">Key finding · Cross-view C2</p>
+          <dl>
+            <div>
+              <dt>Face recognition</dt>
+              <dd>
+                <span class="from">83.1%</span><span class="arrow" aria-hidden="true">→</span><span class="visually-hidden"> to </span><strong>3.4%</strong>
+              </dd>
+            </div>
+            <div>
+              <dt>Person re-identification</dt>
+              <dd>
+                <span class="from">85.3%</span><span class="arrow" aria-hidden="true">→</span><span class="visually-hidden"> to </span><strong>84.7%</strong>
+              </dd>
+            </div>
+          </dl>
+          <p class="finding-note">Coverage-adjusted Rank-1 before and after face blur, with a 38-identity gallery.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="figure-row" aria-label="Overview figure">
+      <div class="shell">
+        <figure>
+          <div class="plate">
+            <img
+              src="assets/figures/teaser.png"
+              alt="Face blur hides the face cue, while body, pose, and silhouette cues remain. Bar chart for cross-view C2 with 38 identities, original versus face blur: face 83.1 to 3.4, re-ID 85.3 to 84.7, pose 10.8 to 10.5, silhouette 18.0 to 17.8."
+              width="2252"
+              height="1187"
+              fetchpriority="high"
+            >
+          </div>
+          <figcaption class="caption">
+            <strong>Reducing face matching does not remove every identity cue.</strong>
+            Bars compare original and face-blurred C2 probes with the same 38-identity gallery.
+            Values are coverage-adjusted Rank-1 for retrieval and accuracy for pose. These are
+            complementary attack measurements, not one common privacy scale; pose identity is also
+            assessed against an action-conditioned null.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="deep">
+      <section id="abstract" class="block">
+        <div class="shell block-grid">
+          <h2 class="label">Abstract</h2>
+
+          <div class="block-body tight">
+            <p class="abstract" data-reveal>
+              Hiding a person’s face can preserve action recognition without preventing
+              identification from other visual cues. We study this gap with NTU120-Privacy-21K,
+              a reproducible protocol of 21,600 videos covering all 120 NTU RGB+D 120 actions.
+              It tests face, appearance, RGB-pose, and silhouette matching across viewpoints,
+              setups, and action ranges, reporting both attack success and feature-extraction
+              coverage. On cross-view C2, face blur reduces coverage-adjusted face Rank-1 from
+              83.1% to 3.4%, while person re-identification remains at 84.7%, compared with 85.3%
+              on unmodified video. DeepPrivacy2 reduces matched C2 face and appearance Rank-1 to
+              6.4% and 14.2% with nearly complete feature coverage, although identity matching
+              remains possible. Its action utility also depends on how the recognizer is trained:
+              adapting the VideoMAEv2 classification head raises Top-1 from 41.2% to 59.4%,
+              compared with 67.8% on clean video. Pose-based utility and Privacy Beyond Pixels
+              provide complementary tests. The results motivate evaluating multiple identity cues
+              and separating information loss from recognizer mismatch. They measure linkability
+              in the tested setting, not a formal privacy guarantee.
+            </p>
+
+            <ul class="item-list" aria-label="Contributions">
+              <li data-reveal>
+                <h3>A reproducible protocol</h3>
+                <p>NTU120-Privacy-21K covers all 120 NTU actions, with fixed identity-matching splits and explicit gallery sizes.</p>
+              </li>
+              <li data-reveal>
+                <h3>A multi-cue evaluation</h3>
+                <p>Attack success is related to descriptor coverage, action-informed pose baselines, and gallery size.</p>
+              </li>
+              <li data-reveal>
+                <h3>Learned anonymization and utility controls</h3>
+                <p>C2 experiments with DeepPrivacy2, adapted action recognition, and pose-based utility, plus a separate Privacy Beyond Pixels feature-space evaluation.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="method" class="block">
+      <div class="shell">
+        <div class="block-grid">
+          <h2 class="label">Method</h2>
+
+          <div data-reveal>
+            <h3 class="section-title">Four identity cues, one closed-set linkability test</h3>
+            <p class="prose">
+              The attacker receives a held-out probe and assigns it to one of the known people in a
+              labeled, unmodified C1/R1 gallery. Identities occur in both gallery and probe by
+              construction, so this is a controlled, closed-set test of linkability rather than
+              recognition of unseen people. No identity model is trained on anonymized probes.
+            </p>
+          </div>
+        </div>
+
+        <figure class="block-wide" data-reveal>
+          <div class="plate">
+            <img
+              src="assets/figures/method_overview.png"
+              alt="Evaluation pipeline. NTU RGB+D 120 frames are assembled into NTU120-Privacy-21K and split into a labeled gallery and anonymized probes under cross-view, cross-setup, and cross-range conditions. Face, re-ID, and silhouette encoders and a pose estimator feed identity attacks scored by Rank-1, mAP, balanced accuracy, and coverage; a frozen action encoder measures utility."
+              width="2191"
+              height="989"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="caption">
+            <strong>RGB-baseline evaluation pipeline.</strong>
+            The original gallery supplies identity references or pose-classifier training data;
+            held-out probes are evaluated before and after anonymization. Privacy measurements
+            combine attack success and coverage, while a frozen action encoder measures utility.
+            C2 extensions add DP2, a temporal pose CNN, and utility-head adaptation. PBP is
+            evaluated separately in feature space.
+          </figcaption>
+        </figure>
+
+        <div class="block-grid block-wide">
+          <h3 class="label">Attacks</h3>
+
+          <div class="block-body tight">
+            <ul class="item-list pairs">
+              <li data-reveal>
+                <h3>Face</h3>
+                <p class="meta">ArcFace</p>
+                <p>512-d descriptors averaged over selected frames, matched to the gallery by cosine similarity.</p>
+              </li>
+              <li data-reveal>
+                <h3>Appearance</h3>
+                <p class="meta">OSNet · MSMT17-pretrained</p>
+                <p>512-d person re-identification descriptors, matched by cosine similarity.</p>
+              </li>
+              <li data-reveal>
+                <h3>RGB pose</h3>
+                <p class="meta">YOLOv11m-pose</p>
+                <p>Keypoints normalized to the person box, classified by an MLP; a temporal CNN adds a C2 sequence attack.</p>
+              </li>
+              <li data-reveal>
+                <h3>Temporal silhouette</h3>
+                <p class="meta">GaitBase · CASIA-B checkpoint</p>
+                <p>Silhouette sequences, read as body-dynamics matching since most NTU actions are not walking.</p>
+              </li>
+            </ul>
+
+            <div class="formula" data-reveal>
+              <p class="formula-expr" aria-label="S cov equals C times S">S<sub>cov</sub> = C · S</p>
+              <p>
+                An attack can fail because its extractor finds no usable descriptor. With coverage
+                <i>C</i> (the fraction of probes yielding descriptors) and conditional success
+                <i>S</i>, the end-to-end score counts extraction failures as unsuccessful attacks.
+                Coverage is reported alongside success, so a low score caused by failed extraction
+                stays visible.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="block-grid block-wide">
+          <h3 class="label">Anonymizers</h3>
+
+          <div data-reveal>
+            <ul class="row-list">
+              <li>
+                <p class="row-key">Face blur</p>
+                <p>71×71 Gaussian kernel on detected faces. All four protocols.</p>
+              </li>
+              <li>
+                <p class="row-key">Body blur</p>
+                <p>51×51 Gaussian kernel on detected people. All four protocols.</p>
+              </li>
+              <li>
+                <p class="row-key">Body pixelation</p>
+                <p>Each person region reduced to about one twelfth of its width and height, then restored with nearest-neighbor interpolation. All four protocols.</p>
+              </li>
+              <li>
+                <p class="row-key">DeepPrivacy2</p>
+                <p>Off-the-shelf <code>FB_cse</code> full-body synthesis. Cross-view C2. DP2 means DeepPrivacy2; it does not provide differential privacy.</p>
+              </li>
+              <li>
+                <p class="row-key">Privacy Beyond Pixels</p>
+                <p>An anonymizing adapter in VideoMAEv2 feature space. Cross-view C2, evaluated in feature space only.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benchmark" class="block">
+      <div class="shell block-grid">
+        <h2 class="label">Benchmark</h2>
+
+        <div class="block-body">
+          <div data-reveal>
+            <h3 class="section-title">NTU120-Privacy-21K</h3>
+            <p class="prose">
+              A fixed evaluation protocol built on NTU RGB+D 120. It selects a manageable subset
+              that retains all 120 action labels and repeated identities across recording
+              conditions. Licensed users can reconstruct the selected video lists from local data
+              using the released filename metadata and fixed split manifests.
+            </p>
+
+            <dl class="stats" style="margin-top: 32px;">
+              <div><dt>Videos</dt><dd>21,600</dd></div>
+              <div><dt>Actions</dt><dd>120</dd></div>
+              <div><dt>Subjects</dt><dd>38</dd></div>
+              <div><dt>Setups</dt><dd>6</dd></div>
+              <div><dt>Cameras</dt><dd>3</dd></div>
+            </dl>
+          </div>
+
+          <div data-reveal>
+            <p class="note table-note">Protocol composition. Component subject sets overlap; the total counts unique subjects.</p>
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Component</th>
+                    <th scope="col">Setups</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col" class="num">Subjects</th>
+                    <th scope="col" class="num">Videos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Pool A</th><td>S007, S011</td><td>A001–A060</td><td class="num">14</td><td class="num">9,000</td></tr>
+                  <tr><th scope="row">Pool B</th><td>S029, S030</td><td>A061–A120</td><td class="num">25</td><td class="num">11,880</td></tr>
+                  <tr><th scope="row">Bridge</th><td>S001, S002</td><td>A001–A060</td><td class="num">2</td><td class="num">720</td></tr>
+                </tbody>
+                <tfoot>
+                  <tr><td>Total</td><td>6</td><td>120</td><td class="num">38</td><td class="num">21,600</td></tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <p class="note table-note">Fixed gallery/probe splits. C denotes camera and R replication; IDs counts gallery identities.</p>
+
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Protocol</th>
+                    <th scope="col">Original gallery</th>
+                    <th scope="col">Probe</th>
+                    <th scope="col" class="num">Gallery/probe videos</th>
+                    <th scope="col" class="num">IDs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Cross-view C2</th><td>C1, R1</td><td>C2, R2</td><td class="num">3,600/3,600</td><td class="num">38</td></tr>
+                  <tr><th scope="row">Cross-view C3</th><td>C1, R1</td><td>C3, R2</td><td class="num">3,600/3,600</td><td class="num">38</td></tr>
+                  <tr><th scope="row">Cross-setup</th><td>Source setup, C1/R1</td><td>Target setup, C2/R2</td><td class="num">1,140/1,140</td><td class="num">18</td></tr>
+                  <tr><th scope="row">Cross-range</th><td>A001–A060, C1/R1</td><td>A061–A120, C2/R2</td><td class="num">240/240</td><td class="num">3</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="note">
+              Gallery sizes pose substantially different identification problems, so each protocol
+              is reported separately. The three-identity cross-range test is a diagnostic, not
+              large-gallery evidence. NTU RGB+D 120 videos, skeletons, and derived media are not
+              redistributed; obtain the dataset from its owners under their terms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="block">
+      <div class="shell block-grid">
+        <h2 class="label">Results</h2>
+
+        <div class="block-body tight">
+          <article class="result" data-reveal>
+            <h3 class="section-title">Hiding faces does not prevent appearance-based matching</h3>
+            <p class="prose">
+              Cross-view C2, 38 identities. Each cell is end-to-end attack success with descriptor
+              coverage in brackets, both in %. Success is coverage-adjusted Rank-1 for face, re-ID,
+              and silhouette, and coverage-adjusted accuracy for the pose MLP.
+            </p>
+
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Attack</th>
+                    <th scope="col" class="num">Original</th>
+                    <th scope="col" class="num">Face blur</th>
+                    <th scope="col" class="num">Body blur</th>
+                    <th scope="col" class="num">Body pixel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Face</th><td class="num">83.1<span class="cov">[99.9]</span></td><td class="num"><span class="hl">3.4</span><span class="cov">[70.7]</span></td><td class="num">7.0<span class="cov">[75.2]</span></td><td class="num">0.0<span class="cov">[4.2]</span></td></tr>
+                  <tr><th scope="row">Re-ID</th><td class="num">85.3<span class="cov">[100.0]</span></td><td class="num"><span class="hl">84.7</span><span class="cov">[100.0]</span></td><td class="num">72.1<span class="cov">[100.0]</span></td><td class="num">49.4<span class="cov">[100.0]</span></td></tr>
+                  <tr><th scope="row">Pose MLP</th><td class="num">10.8<span class="cov">[100.0]</span></td><td class="num">10.5<span class="cov">[100.0]</span></td><td class="num">10.7<span class="cov">[100.0]</span></td><td class="num">0.2<span class="cov">[21.6]</span></td></tr>
+                  <tr><th scope="row">Silhouette</th><td class="num">18.0<span class="cov">[99.9]</span></td><td class="num">17.8<span class="cov">[99.9]</span></td><td class="num">10.4<span class="cov">[99.9]</span></td><td class="num">0.0<span class="cov">[0.3]</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="note">
+              Zero coverage means an unavailable descriptor, not certified identity removal. Under
+              body pixelation, face, pose, and silhouette coverage collapses, so low scores combine
+              extraction failure with changes in success on covered probes.
+            </p>
+
+            <details class="more">
+              <summary>All four protocols</summary>
+              <div class="table-wrap">
+                <table class="data grouped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Protocol</th>
+                      <th scope="col">Attack</th>
+                      <th scope="col" class="num">Original</th>
+                      <th scope="col" class="num">Face blur</th>
+                      <th scope="col" class="num">Body blur</th>
+                      <th scope="col" class="num">Body pixel</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row" rowspan="4">C2 (38 IDs)</th><td>Face</td><td class="num">83.1<span class="cov">[99.9]</span></td><td class="num">3.4<span class="cov">[70.7]</span></td><td class="num">7.0<span class="cov">[75.2]</span></td><td class="num">0.0<span class="cov">[4.2]</span></td></tr>
+                    <tr><td>Re-ID</td><td class="num">85.3<span class="cov">[100.0]</span></td><td class="num">84.7<span class="cov">[100.0]</span></td><td class="num">72.1<span class="cov">[100.0]</span></td><td class="num">49.4<span class="cov">[100.0]</span></td></tr>
+                    <tr><td>Pose MLP</td><td class="num">10.8<span class="cov">[100.0]</span></td><td class="num">10.5<span class="cov">[100.0]</span></td><td class="num">10.7<span class="cov">[100.0]</span></td><td class="num">0.2<span class="cov">[21.6]</span></td></tr>
+                    <tr><td>Silhouette</td><td class="num">18.0<span class="cov">[99.9]</span></td><td class="num">17.8<span class="cov">[99.9]</span></td><td class="num">10.4<span class="cov">[99.9]</span></td><td class="num">0.0<span class="cov">[0.3]</span></td></tr>
+                    <tr class="group-start"><th scope="row" rowspan="4">C3 (38 IDs)</th><td>Face</td><td class="num">50.3<span class="cov">[96.1]</span></td><td class="num">3.4<span class="cov">[87.4]</span></td><td class="num">2.5<span class="cov">[52.5]</span></td><td class="num">0.0<span class="cov">[3.4]</span></td></tr>
+                    <tr><td>Re-ID</td><td class="num">80.6<span class="cov">[100.0]</span></td><td class="num">80.1<span class="cov">[100.0]</span></td><td class="num">64.3<span class="cov">[100.0]</span></td><td class="num">35.7<span class="cov">[100.0]</span></td></tr>
+                    <tr><td>Pose MLP</td><td class="num">4.6<span class="cov">[100.0]</span></td><td class="num">4.6<span class="cov">[100.0]</span></td><td class="num">4.2<span class="cov">[100.0]</span></td><td class="num">1.7<span class="cov">[22.3]</span></td></tr>
+                    <tr><td>Silhouette</td><td class="num">6.2<span class="cov">[100.0]</span></td><td class="num">6.4<span class="cov">[100.0]</span></td><td class="num">6.1<span class="cov">[100.0]</span></td><td class="num">0.1<span class="cov">[0.7]</span></td></tr>
+                    <tr class="group-start"><th scope="row" rowspan="4">Cross-setup (18 IDs)</th><td>Face</td><td class="num">87.8<span class="cov">[100.0]</span></td><td class="num">8.1<span class="cov">[68.7]</span></td><td class="num">16.9<span class="cov">[74.3]</span></td><td class="num">0.4<span class="cov">[3.2]</span></td></tr>
+                    <tr><td>Re-ID</td><td class="num">45.3<span class="cov">[100.0]</span></td><td class="num">47.0<span class="cov">[100.0]</span></td><td class="num">35.5<span class="cov">[100.0]</span></td><td class="num">26.7<span class="cov">[100.0]</span></td></tr>
+                    <tr><td>Pose MLP</td><td class="num">9.5<span class="cov">[100.0]</span></td><td class="num">9.1<span class="cov">[100.0]</span></td><td class="num">10.8<span class="cov">[100.0]</span></td><td class="num">2.1<span class="cov">[26.3]</span></td></tr>
+                    <tr><td>Silhouette</td><td class="num">14.4<span class="cov">[100.0]</span></td><td class="num">13.2<span class="cov">[100.0]</span></td><td class="num">11.0<span class="cov">[100.0]</span></td><td class="num">0.0<span class="cov">[0.0]</span></td></tr>
+                    <tr class="group-start"><th scope="row" rowspan="4">Cross-range (3 IDs)</th><td>Face</td><td class="num">97.9<span class="cov">[100.0]</span></td><td class="num">27.1<span class="cov">[61.7]</span></td><td class="num">32.5<span class="cov">[62.9]</span></td><td class="num">1.2<span class="cov">[4.2]</span></td></tr>
+                    <tr><td>Re-ID</td><td class="num">62.1<span class="cov">[100.0]</span></td><td class="num">62.9<span class="cov">[100.0]</span></td><td class="num">49.2<span class="cov">[100.0]</span></td><td class="num">58.3<span class="cov">[100.0]</span></td></tr>
+                    <tr><td>Pose MLP</td><td class="num">25.4<span class="cov">[100.0]</span></td><td class="num">26.7<span class="cov">[100.0]</span></td><td class="num">32.1<span class="cov">[100.0]</span></td><td class="num">1.7<span class="cov">[13.8]</span></td></tr>
+                    <tr><td>Silhouette</td><td class="num">40.8<span class="cov">[100.0]</span></td><td class="num">35.8<span class="cov">[100.0]</span></td><td class="num">39.2<span class="cov">[100.0]</span></td><td class="num">0.0<span class="cov">[0.0]</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="note" style="margin-top: 0; padding-bottom: 18px;">
+                Silhouette here uses segmentation-derived masks, unlike the matched DeepPrivacy2 run below.
+              </p>
+            </details>
+          </article>
+
+          <article class="result" data-reveal>
+            <h3 class="section-title">DeepPrivacy2 reduces several attacks, leaving residual linkability</h3>
+            <p class="prose">
+              Matched cross-view C2 comparison. Success is conditional on a valid descriptor: Rank-1
+              for retrieval and ordinary accuracy for pose. Brackets give nominal 95% Wilson
+              intervals over covered probes; shared subjects make these descriptive, not
+              cluster-adjusted population intervals.
+            </p>
+
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Endpoint</th>
+                    <th scope="col">Metric</th>
+                    <th scope="col" class="num">Clean</th>
+                    <th scope="col" class="num">DP2</th>
+                    <th scope="col" class="num">Coverage clean/DP2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Face / ArcFace</th><td>R1</td><td class="num">83.2<span class="cov">[81.9, 84.4]</span></td><td class="num">6.4<span class="cov">[5.6, 7.2]</span></td><td class="num">99.94/99.97</td></tr>
+                  <tr><th scope="row">Appearance / OSNet</th><td>R1</td><td class="num">85.2<span class="cov">[84.0, 86.3]</span></td><td class="num"><span class="hl">14.2</span><span class="cov">[13.1, 15.4]</span></td><td class="num">100.00/100.00</td></tr>
+                  <tr><th scope="row">Pose / MLP</th><td>Acc.</td><td class="num">10.3<span class="cov">[9.4, 11.4]</span></td><td class="num">9.0<span class="cov">[8.1, 10.0]</span></td><td class="num">100.00/100.00</td></tr>
+                  <tr><th scope="row">Pose / temporal CNN</th><td>Acc.</td><td class="num">11.5<span class="cov">[10.5, 12.6]</span></td><td class="num">8.8<span class="cov">[7.9, 9.7]</span></td><td class="num">100.00/100.00</td></tr>
+                  <tr><th scope="row">Silhouette / GaitBase</th><td>R1</td><td class="num">26.3<span class="cov">[24.9, 27.7]</span></td><td class="num">8.5<span class="cov">[7.6, 9.4]</span></td><td class="num">99.94/99.94</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="note">
+              DP2 descriptor coverage is 99.94–100%, so these reductions are not explained by
+              widespread extraction failure. The DP2 balanced pose accuracies (7.84% MLP, 7.75%
+              temporal CNN) remain above the 4.86% action-conditioned point null.
+            </p>
+          </article>
+
+          <article class="result" data-reveal>
+            <h3 class="section-title">Much of the zero-shot utility loss is recoverable</h3>
+            <p class="prose">
+              VideoMAEv2 stays frozen in every row; only the action head changes in the adapted row.
+              Retained utility (RU) uses each model’s clean reference. Pose is extracted from RGB, not
+              taken from NTU skeleton annotations.
+            </p>
+
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Head training</th>
+                    <th scope="col">Test</th>
+                    <th scope="col" class="num">Top-1</th>
+                    <th scope="col" class="num">Top-5</th>
+                    <th scope="col" class="num">Mean-class</th>
+                    <th scope="col" class="num">RU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">VideoMAEv2</th><td>Clean</td><td>Clean</td><td class="num">67.8</td><td class="num">93.4</td><td class="num">67.8</td><td class="num">100.0</td></tr>
+                  <tr><th scope="row">VideoMAEv2</th><td>Clean</td><td>DP2</td><td class="num">41.2</td><td class="num">70.6</td><td class="num">41.0</td><td class="num">60.8</td></tr>
+                  <tr><th scope="row">VideoMAEv2</th><td>DP2</td><td>DP2</td><td class="num"><span class="hl">59.4</span></td><td class="num">88.9</td><td class="num">59.3</td><td class="num">87.7</td></tr>
+                  <tr class="group-start"><th scope="row">Pose MLP</th><td>Clean</td><td>Clean</td><td class="num">51.2</td><td class="num">79.6</td><td class="num">51.3</td><td class="num">100.0</td></tr>
+                  <tr><th scope="row">Pose MLP</th><td>Clean</td><td>DP2</td><td class="num">47.9</td><td class="num">75.9</td><td class="num">48.1</td><td class="num">93.5</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="note">
+              The adapted head recovers 68.7% of the 26.58-point gap to the clean reference. Under
+              zero-shot transfer, face blur retains 98.4% of clean C2 Top-1 and body pixelation 57.1%.
+            </p>
+          </article>
+
+          <article class="result" data-reveal>
+            <h3 class="section-title">Privacy Beyond Pixels: feature-space linkability</h3>
+            <p class="prose">
+              PBP releases anonymized VideoMAEv2 features rather than video, so it is evaluated in
+              feature space. These scores are not ranked against the pixel-space attacks above. All
+              feature coverage is 100%.
+            </p>
+
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Endpoint</th>
+                    <th scope="col">Head</th>
+                    <th scope="col" class="num">Clean features</th>
+                    <th scope="col" class="num">PBP features</th>
+                    <th scope="col" class="num">Same-head RU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Latent R1</th><td>Not applicable</td><td class="num">37.6</td><td class="num">32.4</td><td class="num">–</td></tr>
+                  <tr><th scope="row">Action Top-1</th><td>Clean-trained</td><td class="num">67.8</td><td class="num">66.9</td><td class="num">98.7</td></tr>
+                  <tr><th scope="row">Action Top-1</th><td>PBP joint</td><td class="num">62.8</td><td class="num">65.8</td><td class="num">104.8</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="note">
+              The jointly trained head’s same-head ratio is not an improvement over the clean-trained
+              head’s 66.9% accuracy.
+            </p>
+          </article>
+
+          <article class="result" data-reveal>
+            <h3 class="section-title">Trade-off and gallery size</h3>
+
+            <div class="figure-stack">
+              <figure class="narrow">
+                <div class="plate">
+                  <img
+                    src="assets/figures/privacy_utility_tradeoff.png"
+                    alt="Scatter plot of identity attack success against retained action utility for original, face blur, body blur, and body pixelation. Person re-ID stays high under face blur while face recognition drops."
+                    width="1116"
+                    height="831"
+                    loading="lazy"
+                  >
+                </div>
+                <figcaption class="caption">
+                  Mean C2/C3 coverage-adjusted face and re-ID R1 versus retained zero-shot action
+                  utility, with 38 identities in each split. Curves connect measured settings, not an
+                  optimized frontier. DP2 and PBP are evaluated separately, not plotted here.
+                </figcaption>
+              </figure>
+
+              <figure>
+                <div class="plate">
+                  <img
+                    src="assets/figures/gallery_size_sensitivity.png"
+                    alt="Two line plots of conditional Rank-1 against gallery identity-pool size from 5 to 38, for re-ID and face on cross-view C2 and C3."
+                    width="2379"
+                    height="875"
+                    loading="lazy"
+                  >
+                </div>
+                <figcaption class="caption">
+                  Observed gallery-size sensitivity on original cross-view clips. Error bars show
+                  standard deviation over 30 identity-pool draws for N&nbsp;&lt;&nbsp;38; N&nbsp;=&nbsp;38
+                  has one full-pool realization. No out-of-range projections are plotted.
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="result" data-reveal>
+            <h3 class="section-title">Reading these results</h3>
+            <ul class="caveats">
+              <li>These are closed-set linkability tests with 38, 18, or 3 gallery identities. They do not establish performance across clothing changes, unseen subjects, unconstrained environments, or open-set galleries.</li>
+              <li>DeepPrivacy2 and Privacy Beyond Pixels results cover cross-view C2 only.</li>
+              <li>Low attack success is evidence against the tested attack, not a guarantee of anonymity. Nothing here is a formal privacy guarantee.</li>
+              <li>New learned-head results use one seed; repeated-seed uncertainty is not measured.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="code" class="block">
+      <div class="shell block-grid">
+        <h2 class="label">Code</h2>
+
+        <div class="block-body">
+          <div data-reveal>
+            <h3 class="section-title">Check the evidence without a dataset or GPU</h3>
+            <p class="prose">
+              With Python 3.10 or newer, these checks validate protocol composition, corrected
+              chance controls, saved result integrity, and repository structure. They do not rerun
+              GPU experiments.
+            </p>
+
+            <div class="code-block">
+              <button class="copy-btn" type="button" data-copy-target="#quickstart">Copy</button>
+              <pre id="quickstart"><code>git clone https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous.git
+cd Anonymized-But-Not-Anonymous
+python -m unittest discover -s analysis -p 'test_*.py' -v
+python tools/check_project.py</code></pre>
+            </div>
+
+            <p class="note">
+              Full pixel-based reproduction requires restoring NTU RGB+D 120 and the pretrained
+              weights under their owners’ terms; a fresh end-to-end GPU installation has not been
+              validated for this release layout.
+            </p>
+
+            <nav class="link-row" style="margin-top: 26px;" aria-label="Documentation">
+              <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/blob/main/docs/REPRODUCING.md" target="_blank" rel="noreferrer">Reproduction guide</a>
+              <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/blob/main/environments/README.md" target="_blank" rel="noreferrer">Environments</a>
+              <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/blob/main/results/README.md" target="_blank" rel="noreferrer">Saved results</a>
+            </nav>
+          </div>
+
+          <div data-reveal>
+            <h3 class="label" style="margin-bottom: 14px;">Repository</h3>
+            <ul class="row-list">
+              <li><p class="row-key"><code>pipeline/</code></p><p>Extraction, anonymization, attack, and utility stages.</p></li>
+              <li><p class="row-key"><code>gait_integration/</code></p><p>GaitBase temporal-silhouette attack.</p></li>
+              <li><p class="row-key"><code>pbp_integration/</code></p><p>Privacy Beyond Pixels feature-space evaluation.</p></li>
+              <li><p class="row-key"><code>analysis/</code></p><p>Protocol and chance audit, coverage decomposition, output checks.</p></li>
+              <li><p class="row-key"><code>protocol/</code></p><p>Filename metadata and fixed splits; no videos or skeletons.</p></li>
+              <li><p class="row-key"><code>results/</code></p><p>Baseline, matched-C2, PBP, analysis, and timing tables.</p></li>
+              <li><p class="row-key"><code>jobs/</code></p><p>Portable SLURM experiment templates.</p></li>
+              <li><p class="row-key"><code>environments/</code></p><p>Dependencies, pinned external sources, compatibility patches.</p></li>
+              <li><p class="row-key"><code>tools/</code></p><p>Source fetching, release checks, job submission.</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cite" class="deep block">
+      <div class="shell block-grid">
+        <h2 class="label">Cite</h2>
+
+        <div class="cite-layout" data-reveal>
+          <h3 class="section-title">BibTeX</h3>
+          <div class="code-block">
+            <button class="copy-btn" type="button" data-copy-target="#bibtex">Copy</button>
+            <pre id="bibtex"><code>@inproceedings{nabeel2026anonymized,
+  title     = {Anonymized but Not Anonymous: Multi-Cue Identity Leakage in
+               Privacy-Preserving Action Recognition},
+  author    = {Nabeel, Safwan and AlShiha, Farah and Behzad, Muzammil},
+  booktitle = {Asian Conference on Computer Vision (ACCV)},
+  year      = {2026}
+}</code></pre>
+          </div>
+          <p class="note">The official paper URL and DOI will be added when available.</p>
+          <p class="note">We thank King Fahd University of Petroleum and Minerals (KFUPM) for its support.</p>
+          <span class="visually-hidden" role="status" aria-live="polite" data-copy-status></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="deep site-footer">
+    <div class="shell footer-inner">
+      <p>
+        Code released under the
+        <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT License</a>.
+        Dataset and model terms are separate; see the
+        <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/blob/main/THIRD_PARTY.md" target="_blank" rel="noreferrer">third-party notices</a>.
+      </p>
+      <div>
+        <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous" target="_blank" rel="noreferrer">Code</a>
+        <a href="https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/issues" target="_blank" rel="noreferrer">Issues</a>
+        <a href="https://github.com/BRAIN-Lab-AI" target="_blank" rel="noreferrer">BRAIN Lab</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

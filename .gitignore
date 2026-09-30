@@ -14,12 +14,16 @@
 !/protocol/
 !/results/
 !/tools/
+!/assets/
 !/.gitattributes
 !/.gitignore
 !/CITATION.cff
 !/LICENSE
 !/README.md
 !/THIRD_PARTY.md
+# Project page served by GitHub Pages from the repository root.
+!/index.html
+!/.nojekyll
 
 # Optional local experiment binaries and restored dataset inputs
 /artifacts/*
