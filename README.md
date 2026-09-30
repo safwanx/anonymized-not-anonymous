@@ -3,7 +3,7 @@
 <p align="center">
   <b><a href="https://safwanx.github.io/">Safwan Nabeel</a></b><sup>1</sup> &nbsp;
   <b>Farah Alshiha</b><sup>2</sup> &nbsp;
-  <b><a href="https://muzammilbehzad.com/">Muzammil Behzad</a></b><sup>3,4</sup>
+  <b><a href="https://muzammilbehzad.com/">Muzammil Behzad</a></b><sup>3,4,*</sup>
 </p>
 
 <p align="center">
@@ -11,6 +11,10 @@
   <sup>2</sup>Columbia University, New York, NY, USA<br>
   <sup>3</sup>King Fahd University of Petroleum &amp; Minerals, Dhahran, Saudi Arabia<br>
   <sup>4</sup>SDAIA-KFUPM Joint Research Center for Artificial Intelligence, Saudi Arabia
+</p>
+
+<p align="center">
+  <sup>*</sup><b>Corresponding author:</b> <a href="mailto:muzammil.behzad@kfupm.edu.sa">muzammil.behzad@kfupm.edu.sa</a>
 </p>
 
 <p align="center"><b>Asian Conference on Computer Vision (ACCV) 2026</b></p>
@@ -288,8 +292,8 @@ Original code is released under the [MIT License](LICENSE). Dataset media, pretr
 
 ## Acknowledgements
 
-We thank King Fahd University of Petroleum and Minerals (KFUPM) for its support.
+This work was supported by King Fahd University of Petroleum & Minerals (KFUPM) under grant numbers EC241013, IN26117 and INAI2605. The authors would also like to acknowledge the Saudi Data and AI Authority (SDAIA) and KFUPM through the SDAIA-KFUPM Joint Research Center for Artificial Intelligence for providing computational resources.
 
 ## Contact
 
-For questions, please open a [GitHub issue](https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/issues).
+For questions, please open a [GitHub issue](https://github.com/BRAIN-Lab-AI/Anonymized-But-Not-Anonymous/issues) or contact the corresponding author, Muzammil Behzad (<a href="mailto:muzammil.behzad@kfupm.edu.sa">muzammil.behzad@kfupm.edu.sa</a>).
